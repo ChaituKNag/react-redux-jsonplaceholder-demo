@@ -8,3 +8,12 @@ export const getAllUsersAction = () => {
         }))
     )
 }
+
+export const updateCurrentUserAction = (user) => ({
+    type: 'UPDATE_CURRENT_USER',
+    payload: user
+});
+
+export const getCurrentUserAction = () => ({
+    type: 'GET_CURRENT_USER'
+});

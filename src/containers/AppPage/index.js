@@ -5,21 +5,11 @@ import "./index.css";
 import UsersList from '../../components/UsersList';
 import UserSummary from '../../components/UserSummary';
 
-import {getAllUsersAction} from '../../redux/actions';
+import {getAllUsersAction, updateCurrentUserAction} from '../../redux/actions';
 
-class App extends Component {
+class AppPage extends Component {
   constructor(props) {
     super(props);
-    this.userClicked = this.userClicked.bind(this);
-    this.state = {
-      selectedUser: null
-    }
-  }
-  userClicked(item) {
-    this.setState({
-      ...this.state,
-      selectedUser: item
-    });
   }
 
   componentDidMount() {
@@ -27,13 +17,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+
+      <div className="AppPage">
         <h1>List of users</h1>
         <UsersList
           list={this.props.users}
-          userClicked={this.userClicked}
+          userClicked={this.props.updateCurrentUser}
         />
-        <UserSummary user={this.state.selectedUser}/>
       </div>
     );
   }
@@ -47,7 +37,10 @@ const mapDispatchToProps = (dispatch) => {
   return {
     loadAllUsers: () => {
       dispatch(getAllUsersAction())
+    },
+    updateCurrentUser: (user) => {
+      dispatch(updateCurrentUserAction(user))
     }
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(AppPage);

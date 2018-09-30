@@ -1,5 +1,6 @@
-import {getAllUsersAction} from './usersActions';
+import {getAllUsersAction, updateCurrentUserAction} from './usersActions';
 
 export {
-    getAllUsersAction
+    getAllUsersAction,
+    updateCurrentUserAction
 }
