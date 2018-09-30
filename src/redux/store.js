@@ -1,10 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
+
+import { usersReducer } from './reducers';
 
 export default createStore(
     combineReducers({
-        firstReducer: (state, action) => state
+        users: usersReducer
     }),
     {},
-    applyMiddleware(logger)
+    applyMiddleware(logger, thunk)
 )
